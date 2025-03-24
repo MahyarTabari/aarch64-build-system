@@ -8,15 +8,14 @@ This Makefile is designed to simplify the process of cross-compiling C++ and ass
 - **src/cpp-files**: Directory for your C++ source files.
 - **src/asm-files**: Directory for your assembly files.
 - **obj**: Directory for object files.
-- **bin**: Directory for the final compiled binary.
-
+  
 ## Requirements
 
 - **aarch64-linux-gnu-g++**: C++ compiler for AArch64 architecture.
 - **aarch64-linux-gnu-as**: Assembly compiler for AArch64 architecture.
 - **qemu-aarch64**: Emulator to run the AArch64 binary.
 - **gdb-multiarch**: Debugger for cross-platform debugging.
-- **/usr/aarch64-linux-gnu**: AArch64 interpreter path.
+- **/usr/aarch64-linux-gnu**: AArch64 dependencies to run the binary.
 
 ## Usage
 
