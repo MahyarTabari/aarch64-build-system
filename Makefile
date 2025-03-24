@@ -108,7 +108,7 @@ setup: $(CPP_SRC_DIR)/main.cpp $(ASM_SRC_DIR)/assembly_func.s ## setup the envir
 
 # Run the binary using the emulator
 run: $(BINARY) ## run the binary
-	@$(EMULATOR) -L $(INTERPRETER) $(BINARY)
+	@$(EMULATOR) -L $(EMULATION_LIB_PATH) $(BINARY)
 
 # Debug target to run the binary in debugging mode and wait for gdb connection
 debug: $(BINARY)  ## run in debugging mode and wait for gdb connection
