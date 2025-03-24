@@ -16,8 +16,8 @@ CXXFLAGS = -g -Wall -Wextra -O3
 ASFLAGS = -g
 # Emulator to run the AArch64 binary
 EMULATOR = qemu-aarch64
-# Path to the AArch64 interpreter
-INTERPRETER = /usr/aarch64-linux-gnu
+# Path to the AArch64 Libraries
+EMULATION_LIB_PATH = /usr/aarch64-linux-gnu
 # Debugger
 DEBUGGER = gdb-multiarch
 # Architecture for gdb
@@ -112,7 +112,7 @@ run: $(BINARY) ## run the binary
 
 # Debug target to run the binary in debugging mode and wait for gdb connection
 debug: $(BINARY)  ## run in debugging mode and wait for gdb connection
-	$(EMULATOR) -L $(INTERPRETER) -g $(DEBUG_PORT) $(BINARY)
+	$(EMULATOR) -L $(EMULATION_LIB_PATH) -g $(DEBUG_PORT) $(BINARY)
 
 # Connect target to start a GDB session and connect to the qemu debugger
 connect: ## connect gdb
