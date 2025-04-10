@@ -53,7 +53,12 @@ This Makefile is designed to simplify the process of cross-compiling C++ and ass
   
 ## Debugging
 
-- To run the binary with GDB, use the `debug` target. It will start the QEMU emulator in debugging mode and wait for a GDB connection on port `1234`.
+- To debug, run:
+    ```bash
+    make debug
+    ```
+
+- You can also run the binary with GDB, using the `debugserver` target. It will start the QEMU emulator in debugging mode and wait for a GDB connection on port `1234`.
 
     To connect GDB to the debugger, run:
 

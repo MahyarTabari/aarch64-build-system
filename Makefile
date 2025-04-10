@@ -111,11 +111,17 @@ run: $(BINARY) ## run the binary
 	@$(EMULATOR) -L $(EMULATION_LIB_PATH) $(BINARY)
 
 # Debug target to run the binary in debugging mode and wait for gdb connection
-debug: $(BINARY)  ## run in debugging mode and wait for gdb connection
+debugserver: $(BINARY)  ## run in debugging mode and wait for gdb connection
 	$(EMULATOR) -L $(EMULATION_LIB_PATH) -g $(DEBUG_PORT) $(BINARY)
 
 # Connect target to start a GDB session and connect to the qemu debugger
 connect: ## connect gdb
+	$(DEBUGGER) -q --nh -ex 'set architecture $(ARCH)' -ex 'file $(BINARY)' -ex 'target remote localhost:$(DEBUG_PORT)' -ex 'layout regs'
+
+# Debug target to start a debug server and automatically connect gdb
+debug: $(BINARY) ## run a debug server and connect gdb
+	$(EMULATOR) -L $(EMULATION_LIB_PATH) -g $(DEBUG_PORT) $(BINARY) & \
+	sleep 1 && \
 	$(DEBUGGER) -q --nh -ex 'set architecture $(ARCH)' -ex 'file $(BINARY)' -ex 'target remote localhost:$(DEBUG_PORT)' -ex 'layout regs'
 
 # Clean target to remove generated files
